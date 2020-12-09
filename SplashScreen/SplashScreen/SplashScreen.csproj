@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>Ramon Bollen</Authors>
+    <Company>RamBo</Company>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\SplashScreen\Logo.png" />
+    <None Remove="Resources\SplashScreen\Xmas.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MathConverter" Version="1.2.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\SplashScreen\Logo.png" />
+    <Resource Include="Resources\SplashScreen\Xmas.png" />
+  </ItemGroup>
+
+</Project>

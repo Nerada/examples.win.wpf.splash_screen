@@ -1,0 +1,72 @@
+﻿<Window x:Class="SplashScreen.Views.Splash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:math="http://hexinnovation.com/math"
+        xmlns:viewModels="clr-namespace:SplashScreen.ViewModels"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        SizeToContent="WidthAndHeight"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:SplashViewModel}"
+        d:DesignWidth="800" d:DesignHeight="400"
+        FontFamily="Arial"
+        Foreground="DarkSlateGray"
+        Background="WhiteSmoke">
+    <Grid Width="800" Height="400">
+        <Grid>
+            <Grid.Resources>
+                <math:MathConverter x:Key="MathConverter" />
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                   Height="70" Margin="20,20,0,0"
+                   HorizontalAlignment="Left" Source="/Resources/SplashScreen/Logo.png" Stretch="Uniform" />
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
+                       Height="70" Margin="115,34,0,12"
+                       Text="RamBo" FontSize="70"/>
+            <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left" Height="40" Margin="100,-6,0,0"
+                   Source="/Resources/SplashScreen/Xmas.png" Stretch="Uniform"
+                   Visibility="{Binding IsXmas, Converter={StaticResource MathConverter}, ConverterParameter='x==true ? `Visible` : `Hidden`'}" />
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBlock Text="My Happy Application v" FontSize="16"/>
+                <TextBlock Text="{Binding Version}" FontSize="16"/>
+            </StackPanel>
+        </Grid>
+        <Grid VerticalAlignment="Center" Margin="0,50,0,0">
+            <Grid Height="35" Background="DarkSlateGray" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" Padding="10,1,10,0" Margin="-1"
+                       Text="Loading..." FontSize="49"
+                       Background="WhiteSmoke" />
+        </Grid>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Copyright © " FontSize="10"/>
+                <TextBlock Text="{Binding CurrentYear}" FontSize="10"/>
+                <TextBlock Text=", RamBo Inc. All rights reserved." FontSize="10"/>
+            </StackPanel>
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,0,0,20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Build " FontSize="10" />
+                <TextBlock Text="{Binding BuildNumber}" FontSize="10"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
