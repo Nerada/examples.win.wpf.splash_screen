@@ -15,7 +15,7 @@
         d:DataContext="{d:DesignInstance viewModels:SplashViewModel}"
         d:DesignWidth="800" d:DesignHeight="400"
         FontFamily="Arial"
-        Foreground="DarkSlateGray"
+        Foreground="Black"
         Background="WhiteSmoke">
     <Grid Width="800" Height="400">
         <Grid>
@@ -23,7 +23,7 @@
                 <math:MathConverter x:Key="MathConverter" />
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="125" />
+                <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="270" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -50,7 +50,7 @@
             </StackPanel>
         </Grid>
         <Grid VerticalAlignment="Center" Margin="0,50,0,0">
-            <Grid Height="35" Background="DarkSlateGray" />
+            <Grid Height="35" Background="Black" />
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" Padding="10,1,10,0" Margin="-1"
                        Text="Loading..." FontSize="49"
                        Background="WhiteSmoke" />
