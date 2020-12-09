@@ -1,0 +1,76 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+trigger:
+- master
+- features/*
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solutionName: 'SplashScreen'
+  solutionFile: '**/*.sln'
+  resharperSolution: '$(solutionName)/$(solutionName).sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  version: '0.1.0.$(Build.BuildId)'
+
+stages:
+- stage: rl0_stage
+  displayName: 'Release stage 0'
+  jobs:
+  - job: default
+    displayName: 'Default job'
+    timeoutInMinutes: 15
+    steps:
+    - task: NuGetToolInstaller@1
+
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solutionFile)'
+
+    - task: PowerShell@2
+      displayName: 'ReSharper code analysis'
+      inputs:
+        targetType: 'inline'
+        script: '. { iwr -useb https://raw.githubusercontent.com/Nerada/devops_resharperScript/master/ReSharperCodeAnalysisScript.ps1 } | iex; ReSharperCodeAnalysisScript'
+        
+    - task: DeleteFiles@1
+      displayName: 'Delete ReSharper from staging directory'
+      inputs:
+        sourceFolder: '$(Build.ArtifactStagingDirectory)'
+        contents: |
+          **/*
+
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solutionFile)'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+        msbuildArgs: '/p:TreatWarningsAsErrors="true"'
+
+    - task: VSTest@2
+      inputs:
+        testAssemblyVer2: |
+          **/*tests.dll
+          !**/*TestPlatform*.dll
+          !**/obj/**
+          !**/ref/**
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+        codeCoverageEnabled: True
+
+    - task: CopyFiles@2
+      displayName: 'Copy build to staging directory'
+      inputs:
+        Contents: '**/$(solutionName)/bin/$(buildConfiguration)/**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: '$(solutionName)_$(version)'
+        publishLocation: 'Container'
