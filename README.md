@@ -1,1 +1,2 @@
-# examples_wpf-splashScreen
+# WPF Splash Screen [![Build Status](https://dev.azure.com/nerada/GitHub/_apis/build/status/Nerada.examples_wpf-splashScreen?branchName=master)](https://dev.azure.com/nerada/GitHub/_build/latest?definitionId=8&branchName=master)
+An example of a splash screen that shows current version and build number.
