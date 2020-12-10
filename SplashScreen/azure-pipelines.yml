@@ -37,7 +37,7 @@ stages:
       timeoutInMinutes: 5
       inputs:
         targetType: 'inline'
-        script: '. { iwr -useb https://raw.githubusercontent.com/Nerada/devops_resharperScript/master/ReSharperCodeAnalysisScript.ps1 } | iex; ReSharperCodeAnalysisScript'
+        script: 'iex (iwr https://raw.githubusercontent.com/Nerada/devops_resharperScript/master/ReSharperCodeAnalysisScript.ps1)'
         
     - task: DeleteFiles@1
       displayName: 'Delete ReSharper from staging directory'
