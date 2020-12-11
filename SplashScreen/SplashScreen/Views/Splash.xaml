@@ -38,15 +38,15 @@
 
             <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
                        Height="70" Margin="115,34,0,12"
-                       Text="RamBo" FontSize="70"/>
+                       Text="RamBo" FontSize="70" />
             <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                    HorizontalAlignment="Left" Height="40" Margin="100,-6,0,0"
                    Source="/Resources/SplashScreen/Xmas.png" Stretch="Uniform"
                    Visibility="{Binding IsXmas, Converter={StaticResource MathConverter}, ConverterParameter='x==true ? `Visible` : `Hidden`'}" />
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <TextBlock Text="My Happy Application v" FontSize="16"/>
-                <TextBlock Text="{Binding Version}" FontSize="16"/>
+                <TextBlock Text="My Happy Application v" FontSize="16" />
+                <TextBlock Text="{Binding Version}" FontSize="16" />
             </StackPanel>
         </Grid>
         <Grid VerticalAlignment="Center" Margin="0,50,0,0">
@@ -57,15 +57,15 @@
         </Grid>
         <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,30,20">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Copyright © " FontSize="10"/>
-                <TextBlock Text="{Binding CurrentYear}" FontSize="10"/>
-                <TextBlock Text=", RamBo Inc. All rights reserved." FontSize="10"/>
+                <TextBlock Text="Copyright © " FontSize="10" />
+                <TextBlock Text="{Binding CurrentYear}" FontSize="10" />
+                <TextBlock Text=", RamBo Inc. All rights reserved." FontSize="10" />
             </StackPanel>
         </Grid>
         <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,0,0,20">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Build " FontSize="10" />
-                <TextBlock Text="{Binding BuildNumber}" FontSize="10"/>
+                <TextBlock Text="{Binding BuildNumber}" FontSize="10" />
             </StackPanel>
         </Grid>
     </Grid>

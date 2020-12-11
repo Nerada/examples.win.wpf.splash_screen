@@ -1,4 +1,10 @@
-﻿using System.Threading;
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
+//      File: SplashScreen.App.xaml.cs
+// Created on: 20201209
+// -----------------------------------------------
+
+using System.Threading;
 using System.Windows;
 using SplashScreen.Views;
 

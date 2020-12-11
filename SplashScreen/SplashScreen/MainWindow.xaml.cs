@@ -1,4 +1,10 @@
-﻿namespace SplashScreen
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
+//      File: SplashScreen.MainWindow.xaml.cs
+// Created on: 20201209
+// -----------------------------------------------
+
+namespace SplashScreen
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

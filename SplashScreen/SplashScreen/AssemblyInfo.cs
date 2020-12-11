@@ -1,3 +1,9 @@
+// -----------------------------------------------
+//     Author: Ramon Bollen
+//      File: SplashScreen.AssemblyInfo.cs
+// Created on: 20201209
+// -----------------------------------------------
+
 using System.Windows;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None,

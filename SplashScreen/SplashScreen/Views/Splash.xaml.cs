@@ -1,4 +1,10 @@
-﻿using SplashScreen.ViewModels;
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
+//      File: SplashScreen.Splash.xaml.cs
+// Created on: 20201209
+// -----------------------------------------------
+
+using SplashScreen.ViewModels;
 
 namespace SplashScreen.Views
 {

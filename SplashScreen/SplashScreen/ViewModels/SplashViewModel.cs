@@ -1,4 +1,10 @@
-﻿using System;
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
+//      File: SplashScreen.SplashViewModel.cs
+// Created on: 20201209
+// -----------------------------------------------
+
+using System;
 
 namespace SplashScreen.ViewModels
 {
@@ -11,6 +17,7 @@ namespace SplashScreen.ViewModels
             if (!(currentVersion is {} version)) return;
 
             var versionFieldCount = 3;
+
             if (version.Build == 0) versionFieldCount = 2;
 
             Version     = version.ToString(versionFieldCount);
