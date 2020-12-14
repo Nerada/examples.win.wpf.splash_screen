@@ -17,7 +17,7 @@ namespace SplashScreen.Views
         {
             InitializeComponent();
 
-            Loaded += (_, __) => SplashLoaded();
+            Loaded += (_, _) => SplashLoaded();
         }
 
         private void SplashLoaded()

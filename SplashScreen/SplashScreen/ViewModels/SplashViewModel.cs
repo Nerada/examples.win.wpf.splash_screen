@@ -14,7 +14,7 @@ namespace SplashScreen.ViewModels
         {
             Version? currentVersion = GetType().Assembly.GetName().Version;
 
-            if (!(currentVersion is {} version)) return;
+            if (!(currentVersion is { } version)) return;
 
             var versionFieldCount = 3;
 
