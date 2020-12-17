@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MathConverter" Version="1.2.1.6" />
+    <PackageReference Include="MathConverter" Version="2.1.0-alpha0001" />
   </ItemGroup>
 
   <ItemGroup>
