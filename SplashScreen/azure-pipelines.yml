@@ -67,8 +67,14 @@ stages:
     - task: CopyFiles@2
       displayName: 'Copy build to staging directory'
       inputs:
-        Contents: '**/$(solutionName)/bin/$(buildConfiguration)/**'
+        Contents: |
+            **/$(solutionName)/bin/$(buildConfiguration)/**/*.exe
+            **/$(solutionName)/bin/$(buildConfiguration)/**/*.dll
+            **/$(solutionName)/bin/$(buildConfiguration)/**/*.runtimeconfig.json
+            !**/ref/**
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        FlattenFolders: true
+
 
     - task: PublishBuildArtifacts@1
       inputs:
