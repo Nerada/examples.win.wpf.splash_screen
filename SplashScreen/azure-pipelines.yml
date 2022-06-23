@@ -10,74 +10,21 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-variables:
-  solutionName: 'SplashScreen'
-  solutionFile: '**/*.sln'
-  resharperSolution: '$(solutionName)/$(solutionName).sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  version: '0.1.0.$(Build.BuildId)'
+resources:
+  repositories:
+    - repository: devops.pipelines
+      type: github
+      name: Nerada/devops.pipelines
+      endpoint: Nerada #Setup in Azure=>Project settings=>Service connections
 
 stages:
 - stage: rl0_stage
-  displayName: 'Release stage 0'
+  displayName: 'RL0 - Code quality checks & build'
   jobs:
-  - job: default
-    displayName: 'Default job'
-    timeoutInMinutes: 15
-    steps:
-    - task: NuGetToolInstaller@1
-
-    - task: NuGetCommand@2
-      inputs:
-        restoreSolution: '$(solutionFile)'
-
-    - task: PowerShell@2
-      displayName: 'ReSharper code analysis'
-      timeoutInMinutes: 5
-      inputs:
-        targetType: 'inline'
-        script: 'iex (iwr https://raw.githubusercontent.com/Nerada/devops_resharper/master/ReSharperCodeAnalysisScript.ps1)'
-        
-    - task: DeleteFiles@1
-      displayName: 'Delete ReSharper from staging directory'
-      inputs:
-        sourceFolder: '$(Build.ArtifactStagingDirectory)'
-        contents: |
-          **/*
-
-    - task: VSBuild@1
-      inputs:
-        solution: '$(solutionFile)'
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
-        msbuildArgs: '/p:TreatWarningsAsErrors="true"'
-
-    - task: VSTest@2
-      inputs:
-        testAssemblyVer2: |
-          **/*tests.dll
-          !**/*TestPlatform*.dll
-          !**/obj/**
-          !**/ref/**
-        platform: '$(buildPlatform)'
-        configuration: '$(buildConfiguration)'
-        codeCoverageEnabled: True
-
-    - task: CopyFiles@2
-      displayName: 'Copy build to staging directory'
-      inputs:
-        Contents: |
-            **/$(solutionName)/bin/$(buildConfiguration)/**/*.exe
-            **/$(solutionName)/bin/$(buildConfiguration)/**/*.dll
-            **/$(solutionName)/bin/$(buildConfiguration)/**/*.runtimeconfig.json
-            !**/ref/**
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
-        FlattenFolders: true
-
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: '$(solutionName)_$(version)'
-        publishLocation: 'Container'
+  - template: templates/main.yml@devops.pipelines
+    parameters:
+      solutionName: 'SplashScreen'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+      buildFolderName: 'bin'
+      version: '0.1.0.$(Build.BuildId)'
