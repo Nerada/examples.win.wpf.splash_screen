@@ -7,6 +7,9 @@ trigger:
 - master
 - features/*
 
+variables:
+  disable.coverage.autogenerate: 'true' # We overwrite the coverage report generation
+
 pool:
   vmImage: 'windows-latest'
 
@@ -24,7 +27,5 @@ stages:
   - template: templates/main.yml@devops.pipelines
     parameters:
       solutionName: 'SplashScreen'
-      buildPlatform: 'Any CPU'
-      buildConfiguration: 'Release'
-      buildFolderName: 'bin'
       version: '0.1.0.$(Build.BuildId)'
+      containsTests: 'false'

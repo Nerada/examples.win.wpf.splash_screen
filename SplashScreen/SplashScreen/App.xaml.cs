@@ -11,18 +11,18 @@ using SplashScreen.Views;
 namespace SplashScreen
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App
     {
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var splash = new Splash();
+            Splash splash = new();
             splash.Show();
 
             Thread.Sleep(10000);
 
-            var mainWindow = new MainWindow();
+            MainWindow mainWindow = new();
             mainWindow.Show();
 
             splash.Close();

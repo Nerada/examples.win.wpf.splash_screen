@@ -14,11 +14,17 @@ namespace SplashScreen.ViewModels
         {
             Version? currentVersion = GetType().Assembly.GetName().Version;
 
-            if (!(currentVersion is { } version)) return;
+            if (!(currentVersion is { } version))
+            {
+                return;
+            }
 
-            var versionFieldCount = 3;
+            int versionFieldCount = 3;
 
-            if (version.Build == 0) versionFieldCount = 2;
+            if (version.Build == 0)
+            {
+                versionFieldCount = 2;
+            }
 
             Version     = version.ToString(versionFieldCount);
             BuildNumber = version.Revision.ToString();

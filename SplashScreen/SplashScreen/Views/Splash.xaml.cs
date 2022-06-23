@@ -9,7 +9,7 @@ using SplashScreen.ViewModels;
 namespace SplashScreen.Views
 {
     /// <summary>
-    /// Interaction logic for Splash.xaml
+    ///     Interaction logic for Splash.xaml
     /// </summary>
     public partial class Splash
     {
@@ -20,9 +20,6 @@ namespace SplashScreen.Views
             Loaded += (_, _) => SplashLoaded();
         }
 
-        private void SplashLoaded()
-        {
-            DataContext = new SplashViewModel();
-        }
+        private void SplashLoaded() => DataContext = new SplashViewModel();
     }
 }
