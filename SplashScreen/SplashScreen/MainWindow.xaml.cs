@@ -1,19 +1,18 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: SplashScreen.MainWindow.xaml.cs
-// Created on: 20201209
+// Created on: 20210811
 // -----------------------------------------------
 
-namespace SplashScreen
+namespace SplashScreen;
+
+/// <summary>
+///     Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

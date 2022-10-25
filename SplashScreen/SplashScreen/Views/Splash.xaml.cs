@@ -1,25 +1,24 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: SplashScreen.Splash.xaml.cs
-// Created on: 20201209
+// Created on: 20220623
 // -----------------------------------------------
 
 using SplashScreen.ViewModels;
 
-namespace SplashScreen.Views
+namespace SplashScreen.Views;
+
+/// <summary>
+///     Interaction logic for Splash.xaml
+/// </summary>
+public partial class Splash
 {
-    /// <summary>
-    ///     Interaction logic for Splash.xaml
-    /// </summary>
-    public partial class Splash
+    public Splash()
     {
-        public Splash()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            Loaded += (_, _) => SplashLoaded();
-        }
-
-        private void SplashLoaded() => DataContext = new SplashViewModel();
+        Loaded += (_, _) => SplashLoaded();
     }
+
+    private void SplashLoaded() => DataContext = new SplashViewModel();
 }
