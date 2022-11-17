@@ -2,4 +2,5 @@
 Prop3=19,11
 [InternetShortcut]
 IDList=
-URL=https://raw.githubusercontent.com/Nerada/devops.pipelines/master/main.DotSettings
+URL=https://raw.githubusercontent.com/Nerada/devops.pipelines/master/resharper/main.DotSettings
+HotKey=0

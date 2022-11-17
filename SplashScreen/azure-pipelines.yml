@@ -24,7 +24,7 @@ stages:
 - stage: rl0_stage
   displayName: 'RL0 - Code quality checks & build'
   jobs:
-  - template: templates/main.yml@devops.pipelines
+  - template: yaml/main.yml@devops.pipelines
     parameters:
       solutionName: 'SplashScreen'
       version: '0.1.0.$(Build.BuildId)'
