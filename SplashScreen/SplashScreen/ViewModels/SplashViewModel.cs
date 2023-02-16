@@ -14,7 +14,7 @@ public class SplashViewModel
     {
         Version? currentVersion = GetType().Assembly.GetName().Version;
 
-        if (!(currentVersion is { } version)) return;
+        if (currentVersion is not { } version) return;
 
         int versionFieldCount = 3;
 
